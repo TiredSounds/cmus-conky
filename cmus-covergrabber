@@ -1,0 +1,10 @@
+#!/bin/bash
+## A simple script to get the currently playing album from Cmus, and pass it to covergrabber.py.
+## Requires Cover Grabber: https://github.com/thedonvaughn/cover_grabber and of course Cmus music player.
+## It is a good idea to alias this in your .bashrc. I aliased mine as 'cmus-grab'!
+
+# Gets the directory containing our music.
+FOLDER=$( cmus-remote -Q | grep 'file ' | cut -c6- | sed 's:/[^/]*$::' )
+
+# Passes to covergrabber.
+covergrabber "$FOLDER"
